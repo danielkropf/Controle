@@ -8,14 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
 
 namespace Controle
 {
 	public partial class Form1 : Form
 	{
+		List<String> funcionarios;
+		List<String> produtos;
+		List<String> historico = new List<string>();
+
 		public Form1()
 		{
 			InitializeComponent();
+			LoadFuncionarios(funcionarios);
+			LoadProdutos(produtos);
 		}
 
 		private void ChangeMonth(object sender, EventArgs e)
@@ -47,6 +54,59 @@ namespace Controle
 			tab1YearController.Maximum = DateTime.Now.Year + 5;
 			tab1YearController.Value = DateTime.Now.Year;
 
+		}
+		private void SaveHistorico()
+		{
+			if (System.IO.File.Exists("Historico.txt"))
+			{
+				System.IO.File.Delete("Historico.txt");
+			}
+			System.IO.StreamWriter file = new System.IO.StreamWriter("Historico.txt", false);
+
+			for (int i = 0; i < historico.Count; i++)
+			{
+				file.WriteLine(historico[i]);
+			}
+			file.Close();
+		}
+		private void LoadFuncionarios(/*string path, */List<String> list)
+		{
+			list = new List<string>();
+			System.IO.StreamReader fileSR = new System.IO.StreamReader("Funcionarios.txt");
+			string line;
+
+			while ((line = fileSR.ReadLine()) != null)
+			{
+				list.Add(line);
+				tab1ComboFuncionarios.Items.Add(line);
+			}
+			fileSR.Close();
+		}
+		private void LoadProdutos(/*string path, */List<String> list)
+		{
+			list = new List<string>();
+			System.IO.StreamReader fileSR = new System.IO.StreamReader("Produtos.txt");
+			string line;
+
+			while ((line = fileSR.ReadLine()) != null)
+			{
+				list.Add(line);
+				tab1ComboProdutos.Items.Add(line);
+			}
+			fileSR.Close();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if (tab1ComboFuncionarios.Text != null && tab1ComboProdutos.Text != null)
+			{
+				historico.Add(tab1ComboFuncionarios.Text + "#" + tab1ComboProdutos.Text + "#" + tab1QuantidadeController.Value + "#" + tab1DayController.Value + "/" + tab1MonthController.Value + "/" + tab1YearController.Value);
+				SaveHistorico();
+			}
+			else
+			{
+				MessageBox.Show("Preencha todos os campos.", "Controle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 		}
 	}
 }
