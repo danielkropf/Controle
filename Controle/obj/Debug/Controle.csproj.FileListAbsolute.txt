@@ -1,0 +1,9 @@
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\bin\Debug\Controle.exe.config
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\bin\Debug\Controle.exe
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\bin\Debug\Controle.pdb
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.csprojResolveAssemblyReference.cache
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.Form1.resources
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.Properties.Resources.resources
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.csproj.GenerateResource.Cache
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.exe
+C:\Users\danie\Desktop\Arquivos\Visual Studio\Controle\Controle\obj\Debug\Controle.pdb
