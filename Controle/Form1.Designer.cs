@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.button1 = new System.Windows.Forms.Button();
@@ -44,30 +43,26 @@
 			this.tab1ComboProdutos = new System.Windows.Forms.ComboBox();
 			this.tab1ComboFuncionarios = new System.Windows.Forms.ComboBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.menuStrip1.SuspendLayout();
+			this.tab2ComboYear = new System.Windows.Forms.ComboBox();
+			this.tab2ComboMonth = new System.Windows.Forms.ComboBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tab1QuantidadeController)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tab1YearController)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tab1MonthController)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tab1DayController)).BeginInit();
+			this.tabPage2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(673, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// toolStripMenuItem1
-			// 
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 20);
-			this.toolStripMenuItem1.Text = ".";
 			// 
 			// tabControl1
 			// 
@@ -97,7 +92,7 @@
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage1.Size = new System.Drawing.Size(665, 252);
 			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "tabPage1";
+			this.tabPage1.Text = "Adicionar";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
 			// button1
@@ -237,13 +232,63 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.tab2ComboYear);
+			this.tabPage2.Controls.Add(this.tab2ComboMonth);
+			this.tabPage2.Controls.Add(this.label5);
+			this.tabPage2.Controls.Add(this.listBox1);
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
 			this.tabPage2.Size = new System.Drawing.Size(665, 252);
 			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
+			this.tabPage2.Text = "Historico";
 			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// tab2ComboYear
+			// 
+			this.tab2ComboYear.FormattingEnabled = true;
+			this.tab2ComboYear.Location = new System.Drawing.Point(561, 19);
+			this.tab2ComboYear.Name = "tab2ComboYear";
+			this.tab2ComboYear.Size = new System.Drawing.Size(96, 21);
+			this.tab2ComboYear.TabIndex = 3;
+			// 
+			// tab2ComboMonth
+			// 
+			this.tab2ComboMonth.FormattingEnabled = true;
+			this.tab2ComboMonth.Items.AddRange(new object[] {
+            "01 - Janeiro",
+            "02 - Fevereiro",
+            "03 - Março",
+            "04 - Abril",
+            "05 - Maio",
+            "06 - Junho",
+            "07 - Julho",
+            "08 - Agosto",
+            "09 - Setembro",
+            "10 - Outubro",
+            "11 - Novembro",
+            "12 - Dezembro"});
+			this.tab2ComboMonth.Location = new System.Drawing.Point(439, 19);
+			this.tab2ComboMonth.Name = "tab2ComboMonth";
+			this.tab2ComboMonth.Size = new System.Drawing.Size(116, 21);
+			this.tab2ComboMonth.TabIndex = 2;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(8, 3);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(246, 13);
+			this.label5.TabIndex = 1;
+			this.label5.Text = "Dia/Mês/Ano - Funcionario - Produto - Quantidade";
+			// 
+			// listBox1
+			// 
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.Location = new System.Drawing.Point(8, 19);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.Size = new System.Drawing.Size(424, 225);
+			this.listBox1.TabIndex = 0;
 			// 
 			// Form1
 			// 
@@ -258,8 +303,6 @@
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
@@ -267,6 +310,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.tab1YearController)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tab1MonthController)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tab1DayController)).EndInit();
+			this.tabPage2.ResumeLayout(false);
+			this.tabPage2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -275,7 +320,6 @@
 		#endregion
 
 		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.Label label4;
@@ -290,6 +334,10 @@
 		private System.Windows.Forms.NumericUpDown tab1DayController;
 		private System.Windows.Forms.NumericUpDown tab1QuantidadeController;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.ComboBox tab2ComboYear;
+		private System.Windows.Forms.ComboBox tab2ComboMonth;
 	}
 }
 
