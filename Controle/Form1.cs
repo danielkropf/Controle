@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
+using System.Diagnostics;
 
 namespace Controle
 {
@@ -18,6 +19,7 @@ namespace Controle
 		List<string> produtos;
 		List<string> historico = new List<string>();
 		List<List<string>> historicoSplited = new List<List<string>>();
+		bool changed;
 
 		public Form1()
 		{
@@ -85,6 +87,7 @@ namespace Controle
 			{
 				list.Add(line);
 				tab1ComboFuncionarios.Items.Add(line);
+				tab2ComboFuncionarios.Items.Add(line);
 			}
 			fileSR.Close();
 		}
@@ -129,6 +132,7 @@ namespace Controle
 			{
 				list.Add(line);
 				tab1ComboProdutos.Items.Add(line);
+				tab2ComboProdutos.Items.Add(line);
 			}
 			fileSR.Close();
 		}
@@ -150,7 +154,7 @@ namespace Controle
 		{
 			if (tab1ComboFuncionarios.Text != "" && tab1ComboProdutos.Text != "")
 			{
-				historico.Add(tab1ComboFuncionarios.Text + "#" + tab1ComboProdutos.Text + "#" + tab1QuantidadeController.Value + "#" + tab1DayController.Value + "/" + tab1MonthController.Value + "/" + tab1YearController.Value);
+				historico.Add(tab1ComboFuncionarios.Text + "#" + tab1ComboProdutos.Text + "#" + tab1QuantidadeController.Value + "#" + tab1YearController.Value + "/" + tab1MonthController.Value + "/" + tab1DayController.Value);
 				SaveHistorico();
 				MessageBox.Show(tab1ComboFuncionarios.Text + " - " + tab1ComboProdutos.Text + " - " + tab1QuantidadeController.Value + " - " + tab1DayController.Value + "/" + tab1MonthController.Value + "/" + tab1YearController.Value + " adicionado.", "Controle", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
@@ -163,27 +167,180 @@ namespace Controle
 
 		private void UpdateTab2()
 		{
-			string[] line;
-			string[] years = new string[historicoSplited.Count];
-			bool counted = true;
-
-			for(int i = 0; i < historicoSplited.Count; i++)
+			for(int i = 2016; i <= DateTime.Now.Year; i++)
 			{
-				line = historicoSplited[i][3].Split('/');
-				for(int j = 0; j < years.Length; j++)
-				{
-					for (int l = 0; l < j; l++)
-					{
-						if (line[2] == years[l]) counted = false;
-					}
-					if (counted) years[j] = line[2];
-					counted = true;
-				}
-				for(int j = 0; j < years.Length; j++)
-				{
-					if (years[j] != null) tab2ComboYear.Items.Add(years[j]);
-				}
+				tab2ComboYear.Items.Add(i);
 			}
+		}
+
+		private void clearSelections_Click(object sender, EventArgs e)
+		{
+			tab2ComboMonth.Text = "";
+			tab2ComboYear.Text = "";
+		}
+
+		private void tab2ComboYear_TextChanged(object sender, EventArgs e)
+		{
+			if (!changed)
+			{
+				changed = true;
+				tab2ComboMonth.Text = "";
+				tab2ComboFuncionarios.Text = "";
+				tab2ComboProdutos.Text = "";
+
+				List<string> list = new List<string>();
+				string[] listSpilted;
+
+				if (tab2ComboYear.Text != "")
+				{
+					for (int i = 0; i < historicoSplited.Count; i++)
+					{
+						listSpilted = historicoSplited[i][3].Split('/');
+						if (listSpilted[0] == tab2ComboYear.Text) list.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+					}
+					listBox1.Items.Clear();
+					for (int i = 0; i < list.Count; i++) listBox1.Items.Add(list[i]);
+				}
+				else {
+					listBox1.Items.Clear();
+					for (int i = 0; i < historicoSplited.Count; i++) listBox1.Items.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+				}
+				changed = false;
+			}
+		}
+
+		private void tab2ComboMonth_TextChanged(object sender, EventArgs e)
+		{
+			if (!changed)
+			{
+				changed = true;
+				tab2ComboYear.Text = "";
+				tab2ComboFuncionarios.Text = "";
+				tab2ComboProdutos.Text = "";
+
+				List<string> list = new List<string>();
+				string[] listSpilted;
+				string[] listSpilted2;
+
+				if (tab2ComboMonth.Text != "")
+				{
+					listSpilted2 = tab2ComboMonth.Text.Split('-');
+					listSpilted2[0] = listSpilted2[0].Remove(0, 1);
+					listSpilted2[0] = listSpilted2[0].Remove(1, 1);
+
+					for (int i = 0; i < historicoSplited.Count; i++)
+					{
+						listSpilted = historicoSplited[i][3].Split('/');
+						if (listSpilted[1] == listSpilted2[0]) list.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+					}
+
+					listBox1.Items.Clear();
+					for (int i = 0; i < list.Count; i++) listBox1.Items.Add(list[i]);
+				}
+				else {
+					listBox1.Items.Clear();
+					for (int i = 0; i < historicoSplited.Count; i++) listBox1.Items.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+				}
+				changed = false;
+			}
+		}
+
+		private void tab2ComboFuncionarios_TextChanged(object sender, EventArgs e)
+		{
+			if (!changed)
+			{
+				changed = true;
+				tab2ComboMonth.Text = "";
+				tab2ComboYear.Text = "";
+				tab2ComboProdutos.Text = "";
+
+				List<string> list = new List<string>();
+				string[] listSpilted;
+
+				if (tab2ComboFuncionarios.Text != "")
+				{
+					for (int i = 0; i < historicoSplited.Count; i++)
+					{
+						if (historicoSplited[i][0] == tab2ComboFuncionarios.Text) list.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+					}
+					listBox1.Items.Clear();
+					for (int i = 0; i < list.Count; i++) listBox1.Items.Add(list[i]);
+				}
+				else {
+					listBox1.Items.Clear();
+					for (int i = 0; i < historicoSplited.Count; i++) listBox1.Items.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+				}
+				changed = false;
+			}
+		}
+
+		private void tab2ComboProdutos_TextChanged(object sender, EventArgs e)
+		{
+			if (!changed)
+			{
+				changed = true;
+				tab2ComboMonth.Text = "";
+				tab2ComboFuncionarios.Text = "";
+				tab2ComboYear.Text = "";
+
+				List<string> list = new List<string>();
+				string[] listSpilted;
+
+				if (tab2ComboProdutos.Text != "")
+				{
+					for (int i = 0; i < historicoSplited.Count; i++)
+					{
+						if (historicoSplited[i][1] == tab2ComboProdutos.Text) list.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+					}
+					listBox1.Items.Clear();
+					for (int i = 0; i < list.Count; i++) listBox1.Items.Add(list[i]);
+				}
+				else {
+					listBox1.Items.Clear();
+					for (int i = 0; i < historicoSplited.Count; i++) listBox1.Items.Add(historicoSplited[i][3] + " - " + historicoSplited[i][0] + " - " + historicoSplited[i][1] + " - " + historicoSplited[i][2]);
+				}
+				changed = false;
+			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			if (listBox1.SelectedIndex.ToString() != "-1")
+			{
+				int num;
+				string word = listBox1.SelectedItem.ToString();
+				string[] splitedHistorico = word.Split('-');
+				splitedHistorico[0] = splitedHistorico[0].Remove(splitedHistorico[0].Length - 1, 1);
+				splitedHistorico[1] = splitedHistorico[1].Remove(0, 1);
+				splitedHistorico[1] = splitedHistorico[1].Remove(splitedHistorico[1].Length - 1, 1);
+				splitedHistorico[2] = splitedHistorico[2].Remove(0, 1);
+				splitedHistorico[2] = splitedHistorico[2].Remove(splitedHistorico[2].Length - 1, 1);
+				splitedHistorico[3] = splitedHistorico[3].Remove(0, 1);
+				word = splitedHistorico[1] + "#" + splitedHistorico[2] + "#" + splitedHistorico[3] + "#" + splitedHistorico[0];
+
+				historico.Remove(word);
+				SplitHistorico(historicoSplited);
+				WriteHistorico();
+				SaveHistorico();
+			}
+		}
+
+		private void arquivoHistoricotxtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DialogResult dialogResult = MessageBox.Show("Não é recomendado fazer alterações manuais nos arquivos. Deseja continuar mesmo assim?", "Controle", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if(dialogResult == DialogResult.Yes) System.Diagnostics.Process.Start("Historico.txt");
+		}
+
+		private void arquivoProdutostxtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DialogResult dialogResult = MessageBox.Show("Não é recomendado fazer alterações manuais nos arquivos. Deseja continuar mesmo assim?", "Controle", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (dialogResult == DialogResult.Yes) System.Diagnostics.Process.Start("Produtos.txt");
+		}
+
+		private void arquivoFuncionariostxtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DialogResult dialogResult = MessageBox.Show("Não é recomendado fazer alterações manuais nos arquivos. Deseja continuar mesmo assim?", "Controle", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (dialogResult == DialogResult.Yes) System.Diagnostics.Process.Start("Funcionarios.txt");
 		}
 	}
 }

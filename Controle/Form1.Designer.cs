@@ -43,10 +43,25 @@
 			this.tab1ComboProdutos = new System.Windows.Forms.ComboBox();
 			this.tab1ComboFuncionarios = new System.Windows.Forms.ComboBox();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label8 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.tab2ComboProdutos = new System.Windows.Forms.ComboBox();
+			this.tab2ComboFuncionarios = new System.Windows.Forms.ComboBox();
+			this.clearSelections = new System.Windows.Forms.Button();
 			this.tab2ComboYear = new System.Windows.Forms.ComboBox();
 			this.tab2ComboMonth = new System.Windows.Forms.ComboBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.ditarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.arquivoHistoricotxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.arquivoProdutostxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.arquivoFuncionariostxtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tab1QuantidadeController)).BeginInit();
@@ -58,6 +73,8 @@
 			// 
 			// menuStrip1
 			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ditarToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(673, 24);
@@ -232,6 +249,15 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.button3);
+			this.tabPage2.Controls.Add(this.button2);
+			this.tabPage2.Controls.Add(this.label9);
+			this.tabPage2.Controls.Add(this.label8);
+			this.tabPage2.Controls.Add(this.label7);
+			this.tabPage2.Controls.Add(this.label6);
+			this.tabPage2.Controls.Add(this.tab2ComboProdutos);
+			this.tabPage2.Controls.Add(this.tab2ComboFuncionarios);
+			this.tabPage2.Controls.Add(this.clearSelections);
 			this.tabPage2.Controls.Add(this.tab2ComboYear);
 			this.tabPage2.Controls.Add(this.tab2ComboMonth);
 			this.tabPage2.Controls.Add(this.label5);
@@ -244,13 +270,97 @@
 			this.tabPage2.Text = "Historico";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(551, 192);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(106, 23);
+			this.button3.TabIndex = 12;
+			this.button3.Text = "button3";
+			this.button3.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(438, 192);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(106, 23);
+			this.button2.TabIndex = 11;
+			this.button2.Text = "Deletar";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(435, 102);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(49, 13);
+			this.label9.TabIndex = 10;
+			this.label9.Text = "Produtos";
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(435, 62);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(67, 13);
+			this.label8.TabIndex = 9;
+			this.label8.Text = "Funcionarios";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(558, 19);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(26, 13);
+			this.label7.TabIndex = 8;
+			this.label7.Text = "Ano";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(435, 22);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(27, 13);
+			this.label6.TabIndex = 7;
+			this.label6.Text = "Mês";
+			// 
+			// tab2ComboProdutos
+			// 
+			this.tab2ComboProdutos.FormattingEnabled = true;
+			this.tab2ComboProdutos.Location = new System.Drawing.Point(438, 118);
+			this.tab2ComboProdutos.Name = "tab2ComboProdutos";
+			this.tab2ComboProdutos.Size = new System.Drawing.Size(219, 21);
+			this.tab2ComboProdutos.TabIndex = 6;
+			this.tab2ComboProdutos.TextChanged += new System.EventHandler(this.tab2ComboProdutos_TextChanged);
+			// 
+			// tab2ComboFuncionarios
+			// 
+			this.tab2ComboFuncionarios.FormattingEnabled = true;
+			this.tab2ComboFuncionarios.Location = new System.Drawing.Point(438, 78);
+			this.tab2ComboFuncionarios.Name = "tab2ComboFuncionarios";
+			this.tab2ComboFuncionarios.Size = new System.Drawing.Size(219, 21);
+			this.tab2ComboFuncionarios.TabIndex = 5;
+			this.tab2ComboFuncionarios.TextChanged += new System.EventHandler(this.tab2ComboFuncionarios_TextChanged);
+			// 
+			// clearSelections
+			// 
+			this.clearSelections.Location = new System.Drawing.Point(439, 221);
+			this.clearSelections.Name = "clearSelections";
+			this.clearSelections.Size = new System.Drawing.Size(218, 23);
+			this.clearSelections.TabIndex = 4;
+			this.clearSelections.Text = "Limpar";
+			this.clearSelections.UseVisualStyleBackColor = true;
+			this.clearSelections.Click += new System.EventHandler(this.clearSelections_Click);
+			// 
 			// tab2ComboYear
 			// 
 			this.tab2ComboYear.FormattingEnabled = true;
-			this.tab2ComboYear.Location = new System.Drawing.Point(561, 19);
+			this.tab2ComboYear.Location = new System.Drawing.Point(561, 38);
 			this.tab2ComboYear.Name = "tab2ComboYear";
 			this.tab2ComboYear.Size = new System.Drawing.Size(96, 21);
 			this.tab2ComboYear.TabIndex = 3;
+			this.tab2ComboYear.TextChanged += new System.EventHandler(this.tab2ComboYear_TextChanged);
 			// 
 			// tab2ComboMonth
 			// 
@@ -268,10 +378,11 @@
             "10 - Outubro",
             "11 - Novembro",
             "12 - Dezembro"});
-			this.tab2ComboMonth.Location = new System.Drawing.Point(439, 19);
+			this.tab2ComboMonth.Location = new System.Drawing.Point(438, 38);
 			this.tab2ComboMonth.Name = "tab2ComboMonth";
-			this.tab2ComboMonth.Size = new System.Drawing.Size(116, 21);
+			this.tab2ComboMonth.Size = new System.Drawing.Size(117, 21);
 			this.tab2ComboMonth.TabIndex = 2;
+			this.tab2ComboMonth.TextChanged += new System.EventHandler(this.tab2ComboMonth_TextChanged);
 			// 
 			// label5
 			// 
@@ -288,7 +399,47 @@
 			this.listBox1.Location = new System.Drawing.Point(8, 19);
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(424, 225);
+			this.listBox1.Sorted = true;
 			this.listBox1.TabIndex = 0;
+			// 
+			// ditarToolStripMenuItem
+			// 
+			this.ditarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirToolStripMenuItem});
+			this.ditarToolStripMenuItem.Name = "ditarToolStripMenuItem";
+			this.ditarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+			this.ditarToolStripMenuItem.Text = "Arquivo";
+			// 
+			// abrirToolStripMenuItem
+			// 
+			this.abrirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivoHistoricotxtToolStripMenuItem,
+            this.arquivoProdutostxtToolStripMenuItem,
+            this.arquivoFuncionariostxtToolStripMenuItem});
+			this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+			this.abrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.abrirToolStripMenuItem.Text = "Abrir";
+			// 
+			// arquivoHistoricotxtToolStripMenuItem
+			// 
+			this.arquivoHistoricotxtToolStripMenuItem.Name = "arquivoHistoricotxtToolStripMenuItem";
+			this.arquivoHistoricotxtToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+			this.arquivoHistoricotxtToolStripMenuItem.Text = "Arquivo Historico.txt";
+			this.arquivoHistoricotxtToolStripMenuItem.Click += new System.EventHandler(this.arquivoHistoricotxtToolStripMenuItem_Click);
+			// 
+			// arquivoProdutostxtToolStripMenuItem
+			// 
+			this.arquivoProdutostxtToolStripMenuItem.Name = "arquivoProdutostxtToolStripMenuItem";
+			this.arquivoProdutostxtToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+			this.arquivoProdutostxtToolStripMenuItem.Text = "Arquivo Produtos.txt";
+			this.arquivoProdutostxtToolStripMenuItem.Click += new System.EventHandler(this.arquivoProdutostxtToolStripMenuItem_Click);
+			// 
+			// arquivoFuncionariostxtToolStripMenuItem
+			// 
+			this.arquivoFuncionariostxtToolStripMenuItem.Name = "arquivoFuncionariostxtToolStripMenuItem";
+			this.arquivoFuncionariostxtToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+			this.arquivoFuncionariostxtToolStripMenuItem.Text = "Arquivo Funcionarios.txt";
+			this.arquivoFuncionariostxtToolStripMenuItem.Click += new System.EventHandler(this.arquivoFuncionariostxtToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -303,6 +454,8 @@
 			this.Name = "Form1";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
@@ -338,6 +491,20 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.ComboBox tab2ComboYear;
 		private System.Windows.Forms.ComboBox tab2ComboMonth;
+		private System.Windows.Forms.Button clearSelections;
+		private System.Windows.Forms.ComboBox tab2ComboProdutos;
+		private System.Windows.Forms.ComboBox tab2ComboFuncionarios;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.ToolStripMenuItem ditarToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem arquivoHistoricotxtToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem arquivoProdutostxtToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem arquivoFuncionariostxtToolStripMenuItem;
 	}
 }
 
